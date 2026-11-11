@@ -1,18 +1,34 @@
-import "./App.css";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import AppLayout from "./components/layout/AppLayout";
+import DashboardPage from "./features/dashboard/DashboardPage";
+import DevicesPage from "./features/devices/DevicesPage";
+import ContentsPage from "./features/contents/ContentsPage";
+import DisplayPage from "./features/display/DisplayPage";
+import LoginPage from "./features/auth/LoginPage";
+import { AuthProvider } from "./features/auth/AuthContext";
+import ProtectedRoute from "./features/auth/ProtectedRoute";
 
-function App() {
+export default function App() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-base-200">
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h1 className="card-title">Signage Control Panel</h1>
-          <p>Frontend initialized successfully.</p>
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
 
-          <button className="btn btn-primary">Get Started</button>
-        </div>
-      </div>
-    </div>
+          <Route element={<ProtectedRoute />}>
+            <Route element={<AppLayout />}>
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/devices" element={<DevicesPage />} />
+              <Route path="/contents" element={<ContentsPage />} />
+            </Route>
+          </Route>
+
+          <Route path="/display/:id" element={<DisplayPage />} />
+
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
-
-export default App;
