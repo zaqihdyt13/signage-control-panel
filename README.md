@@ -107,4 +107,11 @@ Open the URL provided by Vite.
 
 ## Screenshots
 
-Add screenshots of the Dashboard, Device Management, Content Library, and Device Simulator here.
+### Dashboard
+<img width="959" height="493" alt="image" src="https://github.com/user-attachments/assets/6e80ea98-3a9c-4652-8d05-0cb219c0e03d" />
+
+### Device Management
+<img width="948" height="494" alt="image" src="https://github.com/user-attachments/assets/a72813b1-12a7-4047-bb01-45c9d4da7390" />
+
+### Content Management
+<img width="945" height="494" alt="image" src="https://github.com/user-attachments/assets/911293c7-c005-4854-b941-cf096f55adda" />
